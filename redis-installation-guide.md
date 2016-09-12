@@ -71,6 +71,8 @@ Begin by creating the redis user and group by typing:
 ```sh
 $ sudo add user --system --group --no-create-home redis
 ```
+Note: Even if you create multiple instances of redis on one machine, you will still only need one redis user who will own all the relevant directories.
+
 Now we can create the ```/var/lib/redis``` directory and give `redis` the user and group ownership over this directory:
 ```sh
 $ sudo mkdir /var/lib/redis
