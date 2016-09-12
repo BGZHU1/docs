@@ -69,7 +69,7 @@ Now we just have to create the user, group and directories that we reference in 
 
 Begin by creating the redis user and group by typing:
 ```sh
-$ sudo add user --system --group --no-create-home redis
+$ sudo adduser --system --group --no-create-home redis
 ```
 Now we can create the ```/var/lib/redis``` directory and give `redis` the user and group ownership over this directory:
 ```sh
