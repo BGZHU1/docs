@@ -101,8 +101,8 @@ The print argument, if specified, prints the JSON objects to the screen instead 
 $ ./to_json.py --print 
 ```
 
-## Step 4: Push to Elastic Search Script (For Scraping) <-- Come back here
-Next, you need to run the ```push_elastic.sh``` script which, when run without arguments, takes the ```latest.dsl``` file and pushes it to elastic search on the **dev server**. 
+## Step 4: Push Feed to Elastic Search Script
+Next, you need to run the ```push_elastic.sh``` script which, when run without arguments, takes the ```latest.dsl``` file created from the feed and pushes it to elastic search on the **dev server**. 
 
 In most cases, you will want to push to the elastic search of both the dev and the production servers. This means running the ```push_elastic.sh``` script like so:
 
@@ -202,7 +202,7 @@ $ ./push_redis.sh -h 127.0.0.1
 ```
 
 ####Port
-The default configuration pushes the ```latest.redis``` file to the dev server, which is listening for elastic search on ```PORT 7001```. However, if you want to a different port number, you can do so using the port argument.
+The default configuration pushes the ```latest.redis``` file to the dev server, which is listening for redis on ```PORT 7001```. However, if you want to a different port number, you can do so using the port argument.
 
 ```sh
 $ ./push_redis.sh --port 8888
@@ -213,7 +213,63 @@ $ ./push_redis.sh -p 8888
 ```
 
 
-### Fetch Elasti
+### Step 5.3 Fetch Elastic
+The ```fetch_elastic.py``` in the ```cache``` directory selects  the ```item_id```, ```title```, ```item_url```, ```product_id``` and ```description``` for every item in the mysql database on the **production** server and creates a file ```latest.dsl``` with JSON objects for all the items.
+
+To run, simply type the following command in the ```cache``` directory:
+```sh
+$ ./fetch_elastic.py
+```
+
+### Step 5.4 Push Elastic
+
+The ```push_elastic.sh``` script pushes ```latest.dsl``` made up of all items from the **production mysql database**to the dev server elastic search by default. In most situations, you will want to run ```push_elastic.sh``` pointing both at dev and at the production server.
+
+Do this by running:
+```sh
+$ ./push_elastic.sh
+```
+```sh
+$ ./push_elastic.sh -h 127.0.0.1
+```
+Change ```127.0.0.1``` to the correct production server IP address.
+
+ ```push_elastic.sh``` has the following optional arguments:
+
+#### Filename
+If you want to specify a filename that is different than the default ```latest.dsl``` file, you can do so by running
+```sh
+$ ./push_elastic.sh --file filename.dsl
+```
+or 
+```sh
+$ ./push_elastic.sh -f filename.dsl
+```
+
+#### Host
+The default configuration pushes the ```latest.dsl``` file to the dev server. However, if you want to push to the production server, you should specify the production server host address.
+
+```sh
+$ ./push_elastic.sh --host 127.0.0.1
+```
+or 
+```sh
+$ ./push_elastic.sh -h 127.0.0.1
+```
+
+####Port
+The default configuration pushes the ```latest.dsl``` file to the dev server, which is listening for elastic search on ```PORT 9200```. However, if you want to a different port number, you can do so using the port argument.
+
+```sh
+$ ./push_elastic.sh --port 8888
+```
+or 
+```sh
+$ ./push_elastic.sh -p 8888
+```
+
+## Conclusion
+You have now successfully performed the scrift process for Store 10. If you have any issues with this documentation, email Angela at angela.fox@findmine.com.
 
 
 
