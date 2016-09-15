@@ -50,7 +50,7 @@ For Store 10 specifically, you **need** to run ```to_json.py``` with the availab
 $ ./to_json.py --available
 ```
 
-
+****
 The available argument, as well as other optional arguments are described below:
 ### Available:
 The available argument goes through the entire feed directory, and visits the url of each item to create a unique set of items that are live on the store's site. It returns a smaller set of JSON objects of just the live items.
@@ -83,6 +83,7 @@ $ ./to_dsl.py
 ```
 
 When ```to_dsl.py``` has completed execution, you will have a new file called ```latest.dsl``` in your working directory.
+*****
 
 As with to_json.py, there are various additional arguments that you can specify if desired. These are described below:
 
@@ -115,7 +116,7 @@ which will push to the dev server, followed by
 $ ./push_elastic.sh -h 127.0.0.1
 ```
 replacing ```localhost 127.0.0.1``` with the production server IP address.
-
+********
 
 ```to_elastic.sh``` has the following optional arguments:
 
@@ -151,7 +152,7 @@ or
 $ ./push_elastic.sh -p 8888
 ```
 
-## Step 5: Update the cache in Redis
+## Step 5: Update the cache in Redis and Elastic Search
 
 **NOTE: If you are completing the scrift process for multiple stores, you only need to run Step 5 once after completing Steps 1 - 4 for each store.**
 
@@ -177,6 +178,7 @@ $ ./push_redis.sh
 $ ./push_redis.sh -h 127.0.0.1
 ```
 Change ```127.0.0.1``` to the correct production server IP address.
+*******
 
 As with ```push_elastic.sh```, ```push_redis.sh``` has the following optional arguments:
 
@@ -233,6 +235,7 @@ $ ./push_elastic.sh
 $ ./push_elastic.sh -h 127.0.0.1
 ```
 Change ```127.0.0.1``` to the correct production server IP address.
+***************
 
  ```push_elastic.sh``` has the following optional arguments:
 
