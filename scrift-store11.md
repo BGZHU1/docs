@@ -3,7 +3,20 @@
 Scrift stands for the combination of scraping and sifting feeds that our clients provide us with their site updates. 
 
 All the necessary files can be accessed at Mishki's scrift repository on [Github][git].
+## Step 0: Setup
 
+Log into the dev1 server and create a new tmux session called scrift
+
+```sh
+$ tmux new -s scrift
+```
+Then get the latest changes from the [scrift repo][git].
+
+```sh
+$ cd ~/scrift
+$ git fetch
+$ git merge origin/master
+```
 ## Step 1: Fetch
 The first step in this process is to run ```fetch.sh```.
  This script copies all the files from the sftp directory to your own personal feed folder.
