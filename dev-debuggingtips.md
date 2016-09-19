@@ -7,7 +7,7 @@
 
 If you are trying to tunnel to run FINDMINE on your personal computer, you may see the following error after typing:
 ```sh
-$ ./dev1.wdc.sh -<PortNumber>
+$ ./dev1.wdc.sh <PortNumber>
 Remote Port Forwarding Failed for Listen Port <PortNumber>
 ```
 Here are some good troubleshooting tips
