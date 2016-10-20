@@ -139,6 +139,9 @@ After moving the executable, to tidy up, delete the untarred folder.
 ### Extra Notes:
 If you have a custom vimrc, tmux bash_aliases and gitignore that you like, make sure to those files and folders over to the new machine!
 
+### Next Steps:
+Make sure that this new machine has an OpsDash agent running on it so that it can be monitored. To do this, checkout FINDMINE's OpsDash documentation.
+
 ##Conclusion
 You now have a new machine! You can add more users with the following commands:
 ```sh
