@@ -1,5 +1,7 @@
+
 FINDMINE Making and Configuring New Machines 
 ================================
+
 THE SOFTLAYER EDITION
 ----------------------------------------------------------------
 
@@ -26,7 +28,7 @@ In order to make a FINDMINE machine on softlayer, you will need a login account 
 9. Configure the SSH keys by selecting a key from the list. Select the option ```Only for root user```
 10. Name your machine according to our conventions 
 
-		> Example: dev2.wdc       findmine.com
+   	> Example: dev2.wdc       findmine.com
 
 11. Submit Order
 
@@ -45,7 +47,7 @@ Add the new machine to your VPN configuration. Use the new machine's private IP 
 sudo ssh ./path/to/key root@127.0.0.1
 ```
  *Substitute the machine's IP address for localhost *
- 
+
 You may see a warning that something bad could be happening (a man in the middle attack etc). 
 Use the command ```ssh-keygen``` to manage the keys, by typing:
 ```shell
@@ -101,7 +103,24 @@ Restart ```ssh``` to apply these changes by typing:
 ```sh
 sudo service ssh restart
 ```
-### Step 6: Install all the necessary dependencies for FINDMINE
+### Step 6: Configure the Firewall on your machine
+
+FINDMINE machines use [UFW (Uncomplicated FireWall)][UFW] as the firewall configuration tool. You will need to enable this service by typing:
+
+```shell
+sudo ufw enable
+```
+
+Then, depending on the needs of your machine, configure the firewall to allow the specific ports. The command to allow a port is:
+
+```shell
+sudo ufw allow <port>/<optional: protocol>
+```
+
+You will most likely need to configure the necessary ports for redis: ```7000``` and ```7001``` in order for your FINDMINE instance to work.
+
+### Step 7: Install all the necessary dependencies for FINDMINE
+
 Start out by typing
 ```sh
 sudo apt-get update && sudo apt-get upgrade -y
@@ -137,6 +156,7 @@ $ sudo mv phantomjs /usr/bin/
 After moving the executable, to tidy up, delete the untarred folder.
 
 ### Extra Notes:
+
 If you have a custom vimrc, tmux bash_aliases and gitignore that you like, make sure to those files and folders over to the new machine!
 
 ### Next Steps:
@@ -166,6 +186,7 @@ If you have any further questions (or comments about this documentation), email 
 
 [softlayer]: <https://control.softlayer.com/>
 [phantom]:<http://phantomjs.org/download.html>
+[UFW]:<https://help.ubuntu.com/community/UFW>
 
 
 
