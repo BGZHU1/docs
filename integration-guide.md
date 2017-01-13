@@ -61,6 +61,12 @@ $(window).load(function() {
 });
 ```
 
+Please ensure that there is a provided html container for the module to be rendered to. This container is referenced using the css selection inside of the render() function above.
+
+```html
+<div id="findmine-container"></div>
+```
+
 ###3. Create Your Own HTML or Style Ours
 The match() method stores our recommendations within the findmine object, in findmine.matched. Therefore, you can access this data and update your page however you’d like. The render() method will produce a bare-bones html elements containing the recommendations data from the match() results. Therefore, you can style this element as you see fit. If you chose to use our default styling make sure to include the approapriate link tag in the header section of your product html code.
 ```html
