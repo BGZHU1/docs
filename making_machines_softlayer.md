@@ -1,6 +1,7 @@
 
-FINDMINE Making and Configuring New Machines 
+eFINDMINE Making and Configuring New Machines 
 ================================
+
 
 THE SOFTLAYER EDITION
 ----------------------------------------------------------------
@@ -44,7 +45,7 @@ Add the new machine to your VPN configuration. Use the new machine's private IP 
  Log into your new machine using the command
 
 ```shell
-sudo ssh ./path/to/key root@127.0.0.1
+sudo ssh -i ./path/to/key root@127.0.0.1
 ```
  *Substitute the machine's IP address for localhost *
 
